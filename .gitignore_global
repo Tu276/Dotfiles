@@ -1,0 +1,17 @@
+# Compiled files
+
+*.o
+*.out
+*.a
+*.so
+
+# Logs and temp
+
+*.log
+*.tmp
+*.swp
+*.bak
+
+# System files
+
+.DS_store
