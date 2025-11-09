@@ -1,0 +1,16 @@
+# Case-insensitive autocompletion
+
+set completion-ignore-case on
+set show-all-if-ambiguos on
+set visible-stats on
+
+
+#History search with arrow keys
+
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+
+
+# Vi eiditing for bash uncomment 
+#
+# set editing-mode vi
