@@ -28,12 +28,16 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=5000
+HISTFILESIZE=10000
+HISTCONTROL=ignoredups:erasedups
+HISTIGNORE="ls:ll:la:cd:exit:clear"
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
+
+PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
@@ -156,12 +160,25 @@ export PS1="\[\033[1;32m\]\u@\h \[\033[1;34m\]\w \[\033[1;33m\]\$(parse_git_bran
 alias bashrc='vim ~/.bashrc'
 alias reload='source ~/.bashrc && echo "✅ Bash configuration reloaded."'
 
+#
 # ----- File Navigation -----
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias dev='cd /media/nathan/dev'  # your external disk
 alias home='cd ~'
+
+alias cls='clear'
+alias bashrc='vim ~/.bashrc'
+alias reload='source ~/.bashrc && echo "Bash configuration reloded,"'
+
+#------ System network shortcuts 
+
+alias df='df -h'
+alias du='du -h'
+alias free='free -h'
+alias top='htop'
+alias ports='sudo netstat -tulnp | grep LISTEN'
 
 # ----- Docker Shortcuts -----
 alias dps='docker ps'
@@ -172,6 +189,8 @@ alias drm='docker rm $(docker ps -aq) 2>/dev/null'
 alias drmi='docker rmi $(docker images -q) 2>/dev/null'
 alias dlog='docker logs -f'
 alias dprune='docker system prune -af --volumes'
+
+
 
 # ----- Kubernetes Shortcuts -----
 alias k='kubectl'
@@ -203,3 +222,18 @@ alias c='clear'
 # ----- Fun -----
 alias weather='curl -s wttr.in'
 alias ship='echo "⚓ Smooth seas and steady engines, Nathan!"'
+alias Ruth='echo "DO NOT BE SILLY!"'
+
+
+#-------Completion features -----
+
+if [ -f /etc/bash_completion ]; then
+  . /etc/bash_completion
+fi
+
+#----Neovim shortcut---( if installed)----
+
+if commmand -v nvim >/dev/null 2>&1; then
+  alias vim='nvim'
+fi
+
